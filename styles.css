@@ -170,6 +170,23 @@ section.block{padding:56px 0}
 .modal iframe{flex:1;border:0;width:100%;background:var(--bg)}
 .modal-note{padding:10px 16px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
 
+/* Proofs (preview only: no download links) */
+.proofs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+.proof{display:flex;flex-direction:column;padding:0;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);box-shadow:var(--shadow-sm);overflow:hidden;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.proof:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--ocean)}
+.proof .thumb{aspect-ratio:16/9;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
+.proof .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;-webkit-user-drag:none;user-select:none}
+.proof .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}
+.proof .meta b{display:block;font-size:14px;font-weight:600}
+.proof .meta small{display:block;color:var(--muted);font-size:12px}
+.proof .eye{flex:none;width:36px;height:36px;border-radius:50%;background:var(--ocean-tint);color:var(--ocean);display:grid;place-items:center}
+.proof .eye svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.proof-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.source-note{margin:16px 0 0;padding:12px 16px;border-radius:var(--radius-btn);background:var(--ocean-tint);color:var(--ocean-dark);font-size:13px}
+#proof-modal .modal-box{height:auto;max-height:min(88vh,100%)}
+.proof-view{flex:1;overflow:auto;background:var(--bg);padding:12px;display:grid;place-items:start center}
+.proof-view img{display:block;max-width:100%;height:auto;border-radius:8px;box-shadow:var(--shadow-sm);-webkit-user-drag:none}
+
 /* Footer pager + footer */
 .pager{display:flex;justify-content:space-between;gap:12px;padding:8px 0 56px;flex-wrap:wrap}
 .site-footer{background:#fff;border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}

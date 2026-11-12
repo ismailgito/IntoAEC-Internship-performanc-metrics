@@ -48,6 +48,32 @@
     });
   });
 
+  // Proof preview (view only, no download)
+  var proofBtns = document.querySelectorAll('[data-proof]');
+  if (proofBtns.length) {
+    var pm = document.createElement('div');
+    pm.className = 'modal'; pm.id = 'proof-modal';
+    pm.setAttribute('role', 'dialog'); pm.setAttribute('aria-modal', 'true'); pm.setAttribute('aria-label', 'Proof preview');
+    pm.innerHTML = '<div class="modal-box"><div class="modal-bar"><b></b>' +
+      '<button type="button" class="btn btn-primary btn-sm close">Close</button></div>' +
+      '<div class="proof-view"><img alt="" draggable="false"></div><div class="modal-note"></div></div>';
+    document.body.appendChild(pm);
+    var pImg = pm.querySelector('img'), pTitle = pm.querySelector('.modal-bar b'),
+        pNote = pm.querySelector('.modal-note'), pClose = pm.querySelector('.close'), pLast;
+    function closeProof() { pm.classList.remove('open'); pImg.removeAttribute('src'); if (pLast) pLast.focus(); }
+    proofBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        pLast = b;
+        pImg.src = b.dataset.proof; pImg.alt = b.dataset.alt || b.dataset.title;
+        pTitle.textContent = b.dataset.title; pNote.textContent = b.dataset.note || '';
+        pm.classList.add('open'); pClose.focus();
+      });
+    });
+    pClose.addEventListener('click', closeProof);
+    pm.addEventListener('click', function (e) { if (e.target === pm) closeProof(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pm.classList.contains('open')) closeProof(); });
+  }
+
   // Letter preview modal
   var modal = document.getElementById('preview-modal');
   if (modal) {

@@ -139,6 +139,7 @@ maec-report/
     ├── logo.png
     ├── logo-mark.png
     ├── letters/            PDF letters (add files here)
+    ├── proofs/             Analytics screenshots, shown as view-only previews
     ├── svg/                Animated motion graphics used in this README
     └── gif/                GIF versions of the same animations
 ```
